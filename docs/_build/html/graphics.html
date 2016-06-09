@@ -1,0 +1,716 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphics module &mdash; Asteroid 1.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Asteroid 1.1 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Asteroid
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Asteroid</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>graphics module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/graphics.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-graphics">
+<span id="graphics-module"></span><h1>graphics module<a class="headerlink" href="#module-graphics" title="Permalink to this headline">¶</a></h1>
+<p>Simple object oriented graphics library</p>
+<p>The library is designed to make it very easy for novice programmers to
+experiment with computer graphics in an object oriented fashion. It is
+written by John Zelle for use with the book &#8220;Python Programming: An
+Introduction to Computer Science&#8221; (Franklin, Beedle &amp; Associates).</p>
+<p>LICENSE: This is open-source software released under the terms of the
+GPL (<a class="reference external" href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>).</p>
+<p>PLATFORMS: The package is a wrapper around Tkinter and should run on
+any platform where Tkinter is available.</p>
+<p>INSTALLATION: Put this file somewhere where Python can see it.</p>
+<p>OVERVIEW: There are two kinds of objects in the library. The GraphWin
+class implements a window where drawing can be done and various
+GraphicsObjects are provided that can be drawn into a GraphWin. As a
+simple example, here is a complete program to draw a circle of radius
+10 centered in a 100x100 window:</p>
+<dl class="docutils">
+<dt>def main():</dt>
+<dd>win = GraphWin(&#8220;My Circle&#8221;, 100, 100)
+c = Circle(Point(50,50), 10)
+c.draw(win)
+win.getMouse() # Pause to view result
+win.close()    # Close window when done</dd>
+</dl>
+<div class="section" id="main">
+<h2>main()<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
+<p>GraphWin objects support coordinate transformation through the
+setCoords method and pointer-based input through getMouse.</p>
+<dl class="docutils">
+<dt>The library provides the following graphical objects:</dt>
+<dd>Point
+Line
+Circle
+Oval
+Rectangle
+Polygon
+Text
+Entry (for text-based input)
+Image</dd>
+</dl>
+<p>Various attributes of graphical objects can be set such as
+outline-color, fill-color and line-width. Graphical objects also
+support moving and hiding for animation effects.</p>
+<p>The library also provides a very simple class for pixel-based image
+manipulation, Pixmap. A pixmap can be loaded from a file and displayed
+using an Image object. Both getPixel and setPixel methods are provided
+for manipulating the image.</p>
+<p>DOCUMENTATION: For complete documentation, see Chapter 4 of &#8220;Python
+Programming: An Introduction to Computer Science&#8221; by John Zelle,
+published by Franklin, Beedle &amp; Associates.  Also see
+<a class="reference external" href="http://mcsp.wartburg.edu/zelle/python">http://mcsp.wartburg.edu/zelle/python</a> for a quick reference</p>
+<dl class="class">
+<dt id="graphics.Circle">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Circle</code><span class="sig-paren">(</span><em>center</em>, <em>radius</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphics.Oval" title="graphics.Oval"><code class="xref py py-class docutils literal"><span class="pre">graphics.Oval</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Circle.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Circle.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Circle.getRadius">
+<code class="descname">getRadius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Circle.getRadius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Entry">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Entry</code><span class="sig-paren">(</span><em>p</em>, <em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphics.GraphicsObject" title="graphics.GraphicsObject"><code class="xref py py-class docutils literal"><span class="pre">graphics.GraphicsObject</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Entry.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.getAnchor">
+<code class="descname">getAnchor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.getAnchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.getText">
+<code class="descname">getText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.getText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.setFace">
+<code class="descname">setFace</code><span class="sig-paren">(</span><em>face</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.setFace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.setFill">
+<code class="descname">setFill</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.setFill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.setSize">
+<code class="descname">setSize</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.setSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.setStyle">
+<code class="descname">setStyle</code><span class="sig-paren">(</span><em>style</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.setStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.setText">
+<code class="descname">setText</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.setText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Entry.setTextColor">
+<code class="descname">setTextColor</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Entry.setTextColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.GraphWin">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">GraphWin</code><span class="sig-paren">(</span><em>title='Graphics Window'</em>, <em>width=200</em>, <em>height=200</em>, <em>autoflush=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tkinter.Canvas</span></code></p>
+<p>A GraphWin is a toplevel window for displaying graphics.</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.GraphWin.addItem">
+<code class="descname">addItem</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.addItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.checkKey">
+<code class="descname">checkKey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.checkKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last key pressed or None if no key pressed since last call</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.checkMouse">
+<code class="descname">checkMouse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.checkMouse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last mouse click or None if mouse has
+not been clicked since last call</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.delItem">
+<code class="descname">delItem</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.delItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update drawing to the window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.getHeight">
+<code class="descname">getHeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.getHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the height of the window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.getKey">
+<code class="descname">getKey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.getKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for user to press a key and return it as a string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.getMouse">
+<code class="descname">getMouse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.getMouse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for mouse click and return Point object representing
+the click</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.getWidth">
+<code class="descname">getWidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.getWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the width of the window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.isClosed">
+<code class="descname">isClosed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.isClosed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.isOpen">
+<code class="descname">isOpen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.isOpen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color='black'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set pixel (x,y) to the given color</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.plotPixel">
+<code class="descname">plotPixel</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color='black'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.plotPixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set pixel raw (independent of window coordinates) pixel
+(x,y) to color</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.redraw">
+<code class="descname">redraw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.redraw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.setBackground">
+<code class="descname">setBackground</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.setBackground" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set background color of the window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.setCoords">
+<code class="descname">setCoords</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.setCoords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set coordinates of window to run from (x1,y1) in the
+lower-left corner to (x2,y2) in the upper-right corner.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.setMouseHandler">
+<code class="descname">setMouseHandler</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.setMouseHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.toScreen">
+<code class="descname">toScreen</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.toScreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphWin.toWorld">
+<code class="descname">toWorld</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphWin.toWorld" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="graphics.GraphicsError">
+<em class="property">exception </em><code class="descclassname">graphics.</code><code class="descname">GraphicsError</code><a class="headerlink" href="#graphics.GraphicsError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
+<p>Generic error class for graphics module exceptions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.GraphicsObject">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">GraphicsObject</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Generic base class for all of the drawable objects</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.GraphicsObject.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>graphwin</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the object in graphwin, which should be a GraphWin
+object.  A GraphicsObject may only be drawn into one
+window. Raises an error if attempt made to draw an object that
+is already visible.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphicsObject.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>move object dx units in x direction and dy units in y
+direction</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphicsObject.setFill">
+<code class="descname">setFill</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject.setFill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set interior color to color</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphicsObject.setOutline">
+<code class="descname">setOutline</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject.setOutline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set outline color to color</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphicsObject.setWidth">
+<code class="descname">setWidth</code><span class="sig-paren">(</span><em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject.setWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set line weight to width</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.GraphicsObject.undraw">
+<code class="descname">undraw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.GraphicsObject.undraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Undraw the object (i.e. hide it). Returns silently if the
+object is not currently drawn.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Image">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Image</code><span class="sig-paren">(</span><em>p</em>, <em>*pixmap</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphics.GraphicsObject" title="graphics.GraphicsObject"><code class="xref py py-class docutils literal"><span class="pre">graphics.GraphicsObject</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Image.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.getAnchor">
+<code class="descname">getAnchor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.getAnchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.getHeight">
+<code class="descname">getHeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.getHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the height of the image in pixels</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.getPixel">
+<code class="descname">getPixel</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.getPixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list [r,g,b] with the RGB color values for pixel (x,y)
+r,g,b are in range(256)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.getWidth">
+<code class="descname">getWidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.getWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the width of the image in pixels</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphics.Image.idCount">
+<code class="descname">idCount</code><em class="property"> = 0</em><a class="headerlink" href="#graphics.Image.idCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphics.Image.imageCache">
+<code class="descname">imageCache</code><em class="property"> = {}</em><a class="headerlink" href="#graphics.Image.imageCache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the pixmap image to filename.
+The format for the save image is determined from the filname extension.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.setPixel">
+<code class="descname">setPixel</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.setPixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets pixel (x,y) to the given color</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphics.Image.undraw">
+<code class="descname">undraw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Image.undraw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Line">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Line</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">graphics._BBox</span></code></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Line.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Line.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Line.setArrow">
+<code class="descname">setArrow</code><span class="sig-paren">(</span><em>option</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Line.setArrow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Oval">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Oval</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Oval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">graphics._BBox</span></code></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Oval.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Oval.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Point">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Point</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphics.GraphicsObject" title="graphics.GraphicsObject"><code class="xref py py-class docutils literal"><span class="pre">graphics.GraphicsObject</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Point.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Point.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Point.getX">
+<code class="descname">getX</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Point.getX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Point.getY">
+<code class="descname">getY</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Point.getY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Polygon">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Polygon</code><span class="sig-paren">(</span><em>*points</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphics.GraphicsObject" title="graphics.GraphicsObject"><code class="xref py py-class docutils literal"><span class="pre">graphics.GraphicsObject</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Polygon.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Polygon.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Polygon.getPoints">
+<code class="descname">getPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Polygon.getPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Rectangle">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Rectangle</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Rectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">graphics._BBox</span></code></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Rectangle.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Rectangle.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Text">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Text</code><span class="sig-paren">(</span><em>p</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphics.GraphicsObject" title="graphics.GraphicsObject"><code class="xref py py-class docutils literal"><span class="pre">graphics.GraphicsObject</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Text.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.clone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.getAnchor">
+<code class="descname">getAnchor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.getAnchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.getText">
+<code class="descname">getText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.getText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.setFace">
+<code class="descname">setFace</code><span class="sig-paren">(</span><em>face</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.setFace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.setSize">
+<code class="descname">setSize</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.setSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.setStyle">
+<code class="descname">setStyle</code><span class="sig-paren">(</span><em>style</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.setStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.setText">
+<code class="descname">setText</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.setText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Text.setTextColor">
+<code class="descname">setTextColor</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Text.setTextColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphics.Transform">
+<em class="property">class </em><code class="descclassname">graphics.</code><code class="descname">Transform</code><span class="sig-paren">(</span><em>w</em>, <em>h</em>, <em>xlow</em>, <em>ylow</em>, <em>xhigh</em>, <em>yhigh</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Internal class for 2-D coordinate transformations</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="graphics.Transform.screen">
+<code class="descname">screen</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Transform.screen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphics.Transform.world">
+<code class="descname">world</code><span class="sig-paren">(</span><em>xs</em>, <em>ys</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.Transform.world" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="graphics.color_rgb">
+<code class="descclassname">graphics.</code><code class="descname">color_rgb</code><span class="sig-paren">(</span><em>r</em>, <em>g</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.color_rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>r,g,b are intensities of red, green, and blue in range(256)
+Returns color specifier string for the resulting color</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphics.test">
+<code class="descclassname">graphics.</code><code class="descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="graphics.update">
+<code class="descclassname">graphics.</code><code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Jessime.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
